@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nhóm FreeFire — Discovery & Problem Framing (CP4–CP6 | 6 Phút)</title>
+  <style>
+    :root {
+      --bg-primary: #0b1020;
+      --bg-secondary: #131b33;
+      --bg-card: rgba(25, 35, 64, 0.78);
+      --bg-card-strong: rgba(30, 43, 78, 0.95);
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --border-highlight: rgba(56, 189, 248, 0.45);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-indigo: #818cf8;
+      --accent-emerald: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+      --accent-purple: #c084fc;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 15% 15%, #172554 0%, #0b1020 55%, #070a14 100%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Bar */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(11, 16, 32, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #f97316, #ef4444);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .phase-pill {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+    }
+
+    .phase-pill.problem {
+      border-color: rgba(251, 113, 133, 0.45);
+      background: rgba(251, 113, 133, 0.12);
+      color: #fecdd3;
+    }
+
+    .phase-pill.solution {
+      border-color: rgba(52, 211, 153, 0.45);
+      background: rgba(52, 211, 153, 0.12);
+      color: #a7f3d0;
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .btn-icon:hover {
+      background: rgba(56, 189, 248, 0.18);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    .btn-icon.active {
+      background: rgba(56, 189, 248, 0.25);
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
+    /* Progress Bar */
+    .progress-track {
+      position: fixed;
+      top: 54px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      z-index: 101;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-emerald));
+      width: 12.5%;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Slide Container */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      padding: 72px 48px 64px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1360px;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeSlide 0.28s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Slide Header */
+    .slide-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+    }
+
+    .slide-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-blue);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .slide-meta-time {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-blue);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      font-family: var(--font-mono);
+    }
+
+    /* Content Grids */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .grid-2-asym {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .card.highlight-blue {
+      border-color: rgba(56, 189, 248, 0.5);
+      background: linear-gradient(160deg, rgba(30, 58, 138, 0.45), rgba(15, 23, 42, 0.85));
+    }
+
+    .card.highlight-emerald {
+      border-color: rgba(52, 211, 153, 0.5);
+      background: linear-gradient(160deg, rgba(6, 78, 59, 0.45), rgba(15, 23, 42, 0.85));
+    }
+
+    .card.highlight-rose {
+      border-color: rgba(251, 113, 133, 0.5);
+      background: linear-gradient(160deg, rgba(136, 19, 55, 0.38), rgba(15, 23, 42, 0.85));
+    }
+
+    .card.highlight-amber {
+      border-color: rgba(251, 191, 36, 0.5);
+      background: linear-gradient(160deg, rgba(120, 53, 15, 0.38), rgba(15, 23, 42, 0.85));
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: #fff;
+    }
+
+    /* Typography & Badges */
+    .stat-big {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .text-blue { color: var(--accent-blue); }
+    .text-emerald { color: var(--accent-emerald); }
+    .text-amber { color: var(--accent-amber); }
+    .text-rose { color: var(--accent-rose); }
+    .text-purple { color: var(--accent-purple); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-blue { background: rgba(56, 189, 248, 0.18); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+    .badge-emerald { background: rgba(52, 211, 153, 0.18); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.35); }
+    .badge-amber { background: rgba(251, 191, 36, 0.18); color: #fde68a; border: 1px solid rgba(251, 191, 36, 0.35); }
+    .badge-rose { background: rgba(251, 113, 133, 0.18); color: #fda4af; border: 1px solid rgba(251, 113, 133, 0.35); }
+    .badge-purple { background: rgba(192, 132, 252, 0.18); color: #e9d5ff; border: 1px solid rgba(192, 132, 252, 0.35); }
+
+    /* Tables */
+    table.slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    table.slide-table th,
+    table.slide-table td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+      vertical-align: top;
+      line-height: 1.38;
+    }
+
+    table.slide-table th {
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    table.slide-table tr.selected-row {
+      background: rgba(52, 211, 153, 0.12);
+    }
+
+    table.slide-table tr.selected-row td {
+      border-bottom-color: rgba(52, 211, 153, 0.3);
+    }
+
+    /* Lists */
+    ul.clean-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.86rem;
+      line-height: 1.42;
+      color: var(--text-muted);
+    }
+
+    ul.clean-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    ul.clean-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-weight: bold;
+    }
+
+    ul.clean-list li strong {
+      color: #fff;
+    }
+
+    /* Workflow Steps */
+    .flow-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .flow-step {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      font-size: 0.79rem;
+    }
+
+    .flow-step.bottleneck {
+      border: 2px solid var(--accent-rose);
+      background: rgba(136, 19, 55, 0.32);
+    }
+
+    .flow-step.ai-step {
+      border: 2px solid var(--accent-purple);
+      background: rgba(88, 28, 135, 0.32);
+    }
+
+    .flow-step.rule-step {
+      border: 1.5px solid var(--accent-blue);
+      background: rgba(12, 74, 110, 0.28);
+    }
+
+    .flow-step.hitl-step {
+      border: 2px solid var(--accent-amber);
+      background: rgba(120, 53, 15, 0.32);
+    }
+
+    .flow-time {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* Quote Block */
+    .quote-box {
+      font-style: italic;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid var(--accent-amber);
+      padding: 7px 10px;
+      border-radius: 0 6px 6px 0;
+      margin: 6px 0;
+      font-size: 0.81rem;
+      line-height: 1.38;
+    }
+
+    /* Footer Navigation */
+    .bottombar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(11, 16, 32, 0.88);
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      z-index: 100;
+    }
+
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 26px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .dot:hover {
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    .dot.active {
+      background: var(--accent-blue);
+      color: #0b1020;
+      border-color: var(--accent-blue);
+    }
+
+    @media print {
+      html, body {
+        overflow: visible;
+        height: auto;
+        background: #0b1020 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .topbar, .bottombar, .progress-track, .notes-drawer {
+        display: none !important;
+      }
+      .deck {
+        height: auto;
+        padding: 0;
+        display: block;
+      }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        height: 100vh;
+        padding: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">Nhóm FreeFire</span>
+      <span>K5 · L3B · Day 02 — Discovery &amp; Problem Framing (CP4–CP6)</span>
+      <span id="phaseBadge" class="phase-pill problem">PHẦN 1: NÊU VẤN ĐỀ</span>
+    </div>
+
+    <div class="topbar-controls">
+      <button class="btn-icon" onclick="toggleFullscreen()" title="Toàn màn hình (Phím F)">⛶ Fullscreen (F)</button>
+    </div>
+  </header>
+
+  <div class="progress-track">
+    <div id="progressFill" class="progress-fill"></div>
+  </div>
+
+  <!-- Main Slide Deck -->
+  <main class="deck">
+
+    <!-- ==================== SLIDE 1: TITLE & OVERVIEW ==================== -->
+    <section class="slide active" data-phase="problem">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">MỞ ĐẦU · TỔNG QUAN VẤN ĐỀ &amp; CÁCH GIẢI QUYẾT</div>
+          <h1 class="slide-title">Từ Nỗi Đau Sửa CV Theo Từng JD Đến Quyết Định Pilot Có Kiểm Soát</h1>
+        </div>
+        <div class="slide-meta-time">Tổng quan</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="card highlight-blue" style="padding: 22px 24px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+            <span class="badge badge-blue">VẤN ĐỀ TRỌNG TÂM CỦA NHÓM (1 CÂU)</span>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Thành viên: <strong>Nhân · Hải Anh · Hiệu · Dũng</strong></span>
+          </div>
+          <p style="font-size:1.38rem; font-weight:800; line-height:1.35; color:#fff;">
+            “Sinh viên CNTT năm cuối mất <span class="text-rose">~45 phút/CV</span> để chỉnh mô tả đồ án và kỹ năng khớp từng JD khi ứng tuyển Fresher/Junior.”
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card highlight-rose">
+            <div class="card-title">
+              <span>🔥 Điểm nghẽn (Bottleneck)</span>
+              <span class="badge badge-rose">44% thời gian</span>
+            </div>
+            <div class="stat-big text-rose">20 phút / CV</div>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.4;">
+              Bước <strong>viết lại bullet mô tả đồ án</strong> khớp từ khóa JD mà vẫn đúng sự thật. Tuần nộp 6 CV tốn <strong>270 phút (4,5 giờ)</strong>.
+            </p>
+          </div>
+
+          <div class="card highlight-amber">
+            <div class="card-title">
+              <span>🛠 Cách giải quyết (CP5–CP6)</span>
+              <span class="badge badge-amber">Augment + HITL</span>
+            </div>
+            <div class="stat-big text-amber">Rule + Workflow</div>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.4;">
+              <strong>Không tự xây tool mới.</strong> Dùng Rule kiểm từ khóa thiếu → AI nháp bullet gắn đồ án nguồn → <strong>Sinh viên duyệt từng dòng</strong>.
+            </p>
+          </div>
+
+          <div class="card highlight-emerald">
+            <div class="card-title">
+              <span>✅ Quyết định cuối (CP6)</span>
+              <span class="badge badge-emerald">Có ngưỡng dừng</span>
+            </div>
+            <div class="stat-big text-emerald">GO (Phạm vi nhỏ)</div>
+            <p style="font-size:0.84rem; color:var(--text-muted); line-height:1.4;">
+              <strong>Pilot 2 tuần</strong> (kỳ vọng <strong>45' → &lt; 15'/CV</strong>, 100% đúng đồ án thật). Đo đối chứng song song với <strong>No AI</strong> (CV cố định + Bullet Bank).
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 12px 18px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; font-size:0.83rem; color:var(--text-muted);">
+            <span><strong>Hành trình 6 phút:</strong></span>
+            <span>① <strong>CP4:</strong> Kiểm chứng Mom Test &amp; Research thị trường</span>
+            <span>→</span>
+            <span>② <strong>CP5:</strong> Quy trình Trước/Sau &amp; Boundary</span>
+            <span>→</span>
+            <span>③ <strong>CP6:</strong> Mức can thiệp AI, Eval &amp; Quyết định GO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 2: CP4 VALIDATION (MOM TEST) ==================== -->
+    <section class="slide" data-phase="problem">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">CP4 · KIỂM CHỨNG GIẢ ĐỊNH &amp; PHỎNG VẤN THE MOM TEST</div>
+          <h1 class="slide-title">Tín Hiệu Xác Nhận, Tín Hiệu Phản Bác &amp; Cách Nhóm Sửa Bài Toán</h1>
+        </div>
+        <div class="slide-meta-time">CP4 · Kiểm chứng</div>
+      </div>
+
+      <div class="slide-body">
+        <!-- Top: 3 Interviews + Log -->
+        <div class="grid-3">
+          <div class="card highlight-emerald">
+            <div class="card-title">
+              <span>🎙 Buổi 1: Hải Anh (SV xin thực tập)</span>
+              <span class="badge badge-emerald">Xác nhận Bottleneck</span>
+            </div>
+            <div class="quote-box">
+              “Phần lâu nhất là viết lại câu chữ, vì mình sợ viết quá lên so với những gì mình làm thật.”
+            </div>
+            <ul class="clean-list" style="font-size:0.8rem;">
+              <li><strong>Thời gian:</strong> ~35–40 phút/CV (cùng log <strong>45'/CV</strong> của Hiệu trên 5 lần bấm giờ).</li>
+              <li><strong>Workaround:</strong> Sửa tay; từng nhờ ChatGPT nhưng <strong>AI tự thêm công nghệ chưa từng dùng</strong> → phải đọc kỹ từng dòng.</li>
+            </ul>
+          </div>
+
+          <div class="card highlight-amber">
+            <div class="card-title">
+              <span>🎙 Buổi 2: Nhân (SV mới nộp 2 đơn)</span>
+              <span class="badge badge-amber">Phản bác (Nộp ít đơn)</span>
+            </div>
+            <div class="quote-box">
+              “Cái mình mất thời gian hơn là đọc JD để quyết định có nộp không.”
+            </div>
+            <ul class="clean-list" style="font-size:0.8rem;">
+              <li><strong>Thời gian:</strong> ~10–15 phút/lần (chỉ sửa phần giới thiệu trên 1 CV chung).</li>
+              <li><strong>Insight phản bác:</strong> Người nộp ít đơn không coi viết bullet là bottleneck; pain nghiêng về lọc JD (Opportunity B).</li>
+            </ul>
+          </div>
+
+          <div class="card highlight-rose">
+            <div class="card-title">
+              <span>🎙 Buổi 3: Dũng (Kỹ sư AI đổi việc)</span>
+              <span class="badge badge-rose">Phản bác (Đã có Bullet Bank)</span>
+            </div>
+            <div class="quote-box">
+              “Mình xóa các số liệu mà mình không nhớ đã làm. Không muốn bị hỏi ngược trong phỏng vấn.”
+            </div>
+            <ul class="clean-list" style="font-size:0.8rem;">
+              <li><strong>Workaround:</strong> <strong>2 CV cố định + file câu mô tả dự án (bullet bank)</strong> → chỉ mất <strong>10–15'</strong>; khi JD lệch sâu (VD: RAG) mới mất ~30'.</li>
+              <li><strong>Insight:</strong> No AI đủ cho đa số; chỉ JD lệch mới nghẽn.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom: Assumption Map + How Problem Changed -->
+        <div class="grid-2">
+          <div class="card" style="padding:12px 16px;">
+            <div class="card-title">
+              <span>Assumption Map — Các giả định rủi ro nhất (Quan trọng cao × Bằng chứng thấp)</span>
+            </div>
+            <table class="slide-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Giả định cốt lõi</th>
+                  <th>Loại</th>
+                  <th>Quan trọng</th>
+                  <th>Bằng chứng</th>
+                  <th>Trạng thái sau CP4</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>SV khác cũng mất &gt;30'/CV khi chỉnh theo từng JD</td>
+                  <td>Value</td>
+                  <td>5</td>
+                  <td>2</td>
+                  <td><span class="badge badge-amber">Đúng với SV nộp nhiều đơn</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Bước tốn nhất là viết lại bullet mô tả đồ án (~20')</td>
+                  <td>Value</td>
+                  <td>5</td>
+                  <td>2</td>
+                  <td><span class="badge badge-emerald">Xác nhận (Hiệu 20', Hải Anh)</span></td>
+                </tr>
+                <tr class="selected-row">
+                  <td><strong>3</strong></td>
+                  <td><strong>3 bản CV cố định + bullet bank vẫn chưa đủ</strong></td>
+                  <td>Value</td>
+                  <td><strong>5</strong></td>
+                  <td><strong>1</strong></td>
+                  <td><span class="badge badge-rose">Chưa đủ bằng chứng → Cần đo ở Pilot</span></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>SV sẵn sàng dùng nháp AI &amp; tự duyệt từng dòng</td>
+                  <td>Usability</td>
+                  <td>4</td>
+                  <td>1</td>
+                  <td><span class="badge badge-blue">2/3 lo AI bịa → Bắt buộc có bước duyệt</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card highlight-blue" style="padding:12px 16px;">
+            <div class="card-title">
+              <span>🔄 Nhóm đã sửa Problem thế nào sau Kiểm chứng?</span>
+              <span class="badge badge-blue">4 thay đổi thiết kế</span>
+            </div>
+            <ul class="clean-list" style="font-size:0.83rem; gap:8px;">
+              <li><strong>1. Thu hẹp Actor:</strong> Chỉ nhắm vào <em>“SV nộp nhiều đơn và phải chỉnh CV riêng cho từng JD”</em> (giữ nguyên No AI cho người nộp ít đơn).</li>
+              <li><strong>2. Đặt Boundary chống bịa đặt (Hallucination):</strong> AI tuyệt đối không tự thêm công nghệ hay số liệu không có trong danh sách đồ án thật.</li>
+              <li><strong>3. Thu hẹp hướng giải:</strong> Bỏ ý định “xây công cụ AI viết CV” → chuyển thành <strong>“soạn nháp bullet từ dữ liệu đồ án thật, SV duyệt từng dòng”</strong>.</li>
+              <li><strong>4. Giữ phương án đối chứng No AI:</strong> Vì giả định #3 chưa ngã ngũ, Pilot bắt buộc đo song song <em>3 CV cố định + Bullet Bank</em> với <em>Workflow</em>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 3: CP4 MARKET RESEARCH ==================== -->
+    <section class="slide" data-phase="problem">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">CP4 · RESEARCH GIẢI PHÁP ĐÃ CÓ TRÊN THỊ TRƯỜNG</div>
+          <h1 class="slide-title">Thị Trường Đã Giải Đến Đâu &amp; Vì Sao Nhóm Không Tự Xây Công Cụ Mới?</h1>
+        </div>
+        <div class="slide-meta-time">CP4 · Research</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="card" style="padding:12px 16px;">
+          <table class="slide-table">
+            <thead>
+              <tr>
+                <th>Công cụ / Pattern</th>
+                <th>Giải bước nào?</th>
+                <th>Điểm mạnh</th>
+                <th>Khoảng trống / Rủi ro</th>
+                <th>Bài học rút ra cho nhóm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Teal</strong><br/><span style="font-size:0.73rem; color:var(--text-dim);">tealhq.com/free</span></td>
+                <td>Bước 1, 3, 4 (&amp; 6): So khớp JD, gợi ý chỉnh CV, job tracker</td>
+                <td>Phân tích CV theo JD, chấm điểm match, gợi ý từ khóa; có bản free</td>
+                <td>Gói free giới hạn AI credits; Match Score dựa trên từ khóa, <strong>không kiểm tra tính đúng sự thật</strong></td>
+                <td>Đã có sản phẩm làm đúng bước 4 → <strong>Không tự xây từ đầu</strong>. Có thể thử gói free trong pilot.</td>
+              </tr>
+              <tr class="selected-row">
+                <td><strong>Jobscan</strong><br/><span style="font-size:0.73rem; color:var(--text-dim);">jobscan.co/resume-matcher</span></td>
+                <td>Bước 1, 3: So CV với JD, liệt kê kỹ năng cứng/mềm thiếu</td>
+                <td>Miễn phí 5 lần quét/tháng, chỉ rõ từ khóa thiếu &amp; tần suất</td>
+                <td>Chính Jobscan nêu <strong>ATS thật không chấm điểm CV</strong>; dễ dẫn đến <strong>nhồi từ khóa</strong></td>
+                <td>Chỉ dùng làm bước <strong>Rule (kiểm từ khóa thiếu)</strong>; <strong>không</strong> dùng điểm Match làm metric chất lượng.</td>
+              </tr>
+              <tr>
+                <td><strong>Kickresume</strong><br/><span style="font-size:0.73rem; color:var(--text-dim);">kickresume.com/pricing</span></td>
+                <td>Bước 4: AI Writer viết lại nội dung CV từ job title &amp; JD</td>
+                <td>Tạo nhanh nội dung CV từ tin tuyển dụng</td>
+                <td>AI Writer nằm ở gói trả phí; nguy cơ <strong>sinh nội dung không đến từ đồ án thật</strong></td>
+                <td>Nếu dùng AI viết bullet, bắt buộc ép đầu vào là <strong>dữ liệu đồ án thật</strong> + duyệt từng dòng.</td>
+              </tr>
+              <tr>
+                <td><strong>TopCV</strong><br/><span style="font-size:0.73rem; color:var(--text-dim);">topcv.vn</span></td>
+                <td>Bước 5: Căn layout 1 trang, xuất PDF</td>
+                <td>~70 mẫu CV chuẩn theo vị trí ứng tuyển (No AI)</td>
+                <td>Chỉ giải phần trình bày, không viết lại mô tả đồ án theo JD</td>
+                <td>Bước 5 (7 phút) giải quyết triệt để bằng <strong>mẫu cố định</strong>; AI chỉ nên nhắm vào Bước 4.</td>
+              </tr>
+              <tr>
+                <td><strong>Prompt ChatGPT chuẩn</strong><br/><span style="font-size:0.73rem; color:var(--text-dim);">findskill.ai / rezi.ai blog</span></td>
+                <td>Bước 4: Dán JD + dữ liệu đồ án thật → nháp bullet</td>
+                <td>Miễn phí, không cần cài tool mới, chủ động kiểm soát prompt</td>
+                <td>Chưa có số liệu đo thời gian thực tế trên sinh viên</td>
+                <td>Mức <strong>Workflow</strong> có thể bắt đầu ngay bằng <strong>prompt chuẩn</strong> mà chưa cần code bất kỳ hệ thống nào.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-3">
+          <div class="card highlight-emerald">
+            <div class="card-title">💡 Kết luận 1: Không tự xây mới</div>
+            <p style="font-size:0.83rem; color:var(--text-muted);">
+              Bước viết lại bullet (bottleneck 20') đã có công cụ hỗ trợ hoặc giải được bằng <strong>prompt chuẩn</strong>. Tự code một web/tool AI viết CV lúc này là lãng phí.
+            </p>
+          </div>
+          <div class="card highlight-blue">
+            <div class="card-title">🔗 Kết luận 2: Tổ hợp Quy trình</div>
+            <p style="font-size:0.83rem; color:var(--text-muted);">
+              <strong>Rule</strong> kiểm từ khóa thiếu (Jobscan/Teal free) → <strong>AI</strong> nháp bullet từ dữ liệu đồ án thật → <strong>Sinh viên</strong> duyệt từng dòng → Mẫu cố định xuất PDF.
+            </p>
+          </div>
+          <div class="card highlight-amber">
+            <div class="card-title">❓ Điểm cần kiểm chứng ở CP6</div>
+            <p style="font-size:0.83rem; color:var(--text-muted);">
+              Nháp AI kèm bước đọc duyệt lại từng dòng có thật sự giảm tổng thời gian từ <strong>45 phút xuống dưới 15 phút/CV</strong> và thắng được <strong>No AI</strong> không?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 4: CP5 BEFORE / AFTER PROCESS ==================== -->
+    <section class="slide" data-phase="solution">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">CP5 · QUY TRÌNH TRƯỚC / SAU (BEFORE &amp; AFTER WORKFLOW)</div>
+          <h1 class="slide-title">Tái Thiết Kế Quy Trình: Từ 45 Phút (6/6 Thủ Công) Xuống ~14 Phút Kỳ Vọng</h1>
+        </div>
+        <div class="slide-meta-time">CP5 · Quy trình</div>
+      </div>
+
+      <div class="slide-body">
+        <!-- CURRENT PROCESS -->
+        <div class="card" style="padding:12px 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; font-weight:700; color:#fda4af;">🔴 HIỆN TẠI (BASELINE BẤM GIỜ THẬT): 6 bước · 45 phút/CV · 6/6 bước thủ công</span>
+            <span class="badge badge-rose">Bottleneck chiếm 44% thời gian</span>
+          </div>
+          <div class="flow-row">
+            <div class="flow-step">
+              <div><strong>B1. Đọc JD, gạch từ khóa</strong><br/><span style="color:var(--text-dim);">Thủ công · Gạch tay</span></div>
+              <div class="flow-time text-muted">5 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><strong>B2. Mở CV gốc &amp; GitHub</strong><br/><span style="color:var(--text-dim);">Thủ công · Tìm repo</span></div>
+              <div class="flow-time text-muted">3 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><strong>B3. Chọn đồ án khớp JD</strong><br/><span style="color:var(--text-dim);">Thủ công · Đọc README</span></div>
+              <div class="flow-time text-muted">5 phút</div>
+            </div>
+            <div class="flow-step bottleneck">
+              <div><strong class="text-rose">B4. Viết lại bullet đồ án</strong><br/><span style="color:#fecdd3;">🔥 BOTTLENECK · Cân nhắc từ</span></div>
+              <div class="flow-time text-rose">20 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><strong>B5. Căn layout, xuất PDF</strong><br/><span style="color:var(--text-dim);">Thủ công · Sửa lỗi tràn trang</span></div>
+              <div class="flow-time text-muted">7 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><strong>B6. Nộp đơn &amp; ghi Sheets</strong><br/><span style="color:var(--text-dim);">Thủ công · Lưu link</span></div>
+              <div class="flow-time text-muted">5 phút</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FUTURE PROCESS -->
+        <div class="card highlight-emerald" style="padding:12px 16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.88rem; font-weight:700; color:#6ee7b7;">🟢 TƯƠNG LAI (KỲ VỌNG): 6 bước · ~14 phút/CV (Target &lt; 15') · 3/6 bước thủ công</span>
+            <span class="badge badge-emerald">Chuẩn bị 1 lần: Danh sách đồ án thật + Mẫu CV cố định</span>
+          </div>
+          <div class="flow-row">
+            <div class="flow-step rule-step">
+              <div><span class="badge badge-blue" style="margin-bottom:3px;">RULE</span><br/><strong>B1. Dán JD tìm từ khóa thiếu</strong></div>
+              <div class="flow-time text-blue">2 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><span class="badge badge-emerald" style="margin-bottom:3px;">CON NGƯỜI</span><br/><strong>B2. Chọn đồ án từ DS chuẩn bị sẵn</strong></div>
+              <div class="flow-time text-emerald">2 phút</div>
+            </div>
+            <div class="flow-step ai-step">
+              <div><span class="badge badge-purple" style="margin-bottom:3px;">AI NHÁP</span><br/><strong>B3. Nháp 3–5 bullet + ghi đồ án nguồn</strong></div>
+              <div class="flow-time text-purple">1 phút</div>
+            </div>
+            <div class="flow-step hitl-step">
+              <div><span class="badge badge-amber" style="margin-bottom:3px;">CON NGƯỜI (HITL)</span><br/><strong>B4. Duyệt từng dòng, xóa ý sai</strong></div>
+              <div class="flow-time text-amber">5 phút</div>
+            </div>
+            <div class="flow-step rule-step">
+              <div><span class="badge badge-blue" style="margin-bottom:3px;">RULE (MẪU)</span><br/><strong>B5. Đưa vào mẫu cố định, xuất PDF</strong></div>
+              <div class="flow-time text-blue">2 phút</div>
+            </div>
+            <div class="flow-step">
+              <div><span class="badge badge-emerald" style="margin-bottom:3px;">CON NGƯỜI</span><br/><strong>B6. SV tự nộp &amp; ghi Sheets</strong></div>
+              <div class="flow-time text-emerald">2 phút</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boundary & Fallback -->
+        <div class="grid-2">
+          <div class="card highlight-amber" style="padding:11px 16px;">
+            <div class="card-title" style="margin-bottom:4px;">🛡️ BOUNDARY (Ranh giới kiểm soát bắt buộc)</div>
+            <p style="font-size:0.81rem; color:var(--text-muted); line-height:1.4;">
+              • AI <strong>không tự thêm</strong> kỹ năng, công nghệ hay số liệu ngoài danh sách đồ án thật.<br/>
+              • AI <strong>không tự nộp hồ sơ</strong>; mỗi bullet phải <strong>ghi rõ đồ án nguồn</strong> và được SV duyệt trước khi xuất PDF.
+            </p>
+          </div>
+          <div class="card highlight-rose" style="padding:11px 16px;">
+            <div class="card-title" style="margin-bottom:4px;">↩️ PHƯƠNG ÁN QUAY VỀ (Fallback khi AI không đạt)</div>
+            <p style="font-size:0.81rem; color:var(--text-muted); line-height:1.4;">
+              • Nếu bản nháp sai sự thật hoặc SV phải <strong>viết lại trên 50% ở 2 CV liên tiếp</strong> → <strong>Bỏ nháp AI</strong>, quay về phương án <strong>No AI</strong> (3 bản CV cố định + ngân hàng câu mô tả đồ án).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 5: CP6 AI INTERVENTION LEVEL ==================== -->
+    <section class="slide" data-phase="solution">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">CP6 · MỨC CAN THIỆP AI, AI CANVAS &amp; GOOGLE PAIR</div>
+          <h1 class="slide-title">Vì Sao Chọn Workflow + Rule (Có Điều Kiện) Mà Không Chọn Agent?</h1>
+        </div>
+        <div class="slide-meta-time">CP6 · Mức can thiệp AI</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2-asym">
+          <!-- Left: 4 Levels Comparison Table -->
+          <div class="card" style="padding:12px 16px;">
+            <div class="card-title">
+              <span>So sánh 4 mức can thiệp AI cho bài toán chỉnh CV</span>
+              <span class="badge badge-purple">Mơ hồ TB-Cao × Phức tạp Thấp</span>
+            </div>
+            <table class="slide-table">
+              <thead>
+                <tr>
+                  <th>Mức</th>
+                  <th>Phương án cụ thể</th>
+                  <th>Rủi ro / Giới hạn</th>
+                  <th>Quyết định</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>No AI</strong></td>
+                  <td>3 bản CV cố định (Java, Node.js, Fullstack) + Bullet Bank (Google Docs) + Mẫu TopCV</td>
+                  <td>Vẫn tốn công chỉnh câu chữ khi JD lệch bản cố định; chưa có số đo thật</td>
+                  <td><span class="badge badge-amber">Giữ làm đối chứng</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Rule</strong></td>
+                  <td>Công cụ so khớp từ khóa JD–CV (Jobscan/Teal free) + Mẫu layout cố định</td>
+                  <td>Không viết được câu hoàn chỉnh; dễ nhồi từ khóa</td>
+                  <td><span class="badge badge-blue">Dùng ở Bước 1 &amp; 5</span></td>
+                </tr>
+                <tr class="selected-row">
+                  <td><strong>Workflow</strong></td>
+                  <td>Rule kiểm từ khóa → <strong>AI nháp 3–5 bullet từ đồ án thật</strong> → SV duyệt → Xuất PDF</td>
+                  <td>Nháp nhạt hoặc bịa chi tiết; SV lười duyệt kỹ</td>
+                  <td><span class="badge badge-emerald">CHỌN (Có điều kiện)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Agent</strong></td>
+                  <td>AI tự quét JD, tự chọn đồ án, tự sửa CV và tự bấm nộp</td>
+                  <td>Nộp nhầm thông tin, bịa kỹ năng, mất uy tín ứng viên</td>
+                  <td><span class="badge badge-rose">Loại bỏ</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top:10px; background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.35); padding:9px 12px; border-radius:8px; font-size:0.8rem; color:#fef3c7;">
+              <strong>⚠️ Vì sao chưa chọn hẳn mức đơn giản hơn (No AI)?</strong> Nhóm thẳng thắn nhìn nhận chưa có số đo chứng minh Workflow nhanh hơn No AI. Vì vậy <strong>Workflow được chọn có điều kiện</strong>: Pilot phải đo song song No AI và Workflow; nếu No AI đạt &lt; 15'/CV thì quay về No AI!
+            </div>
+          </div>
+
+          <!-- Right: Google PAIR + AI Canvas -->
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="card highlight-blue" style="padding:12px 16px;">
+              <div class="card-title">
+                <span>🧭 Hai câu hỏi của Google PAIR</span>
+                <span class="badge badge-blue">People + AI Guidebook</span>
+              </div>
+              <ul class="clean-list" style="font-size:0.81rem;">
+                <li><strong>Augment vs Automate? → Chọn AUGMENT (Hỗ trợ):</strong> SV không giao quyền nộp đơn cho AI vì rủi ro gửi nhầm; SV muốn tự chọn đồ án và duyệt bản cuối.</li>
+                <li><strong>Báo nhầm vs Bỏ sót? → BÁO NHẦM TỆ HƠN:</strong> AI tự thêm kỹ năng/số liệu không có khiến SV bị hỏi vặn khi phỏng vấn và mất uy tín. <em>(Xử lý: bắt buộc ghi đồ án nguồn + SV xóa mọi chi tiết không nhớ).</em></li>
+              </ul>
+            </div>
+
+            <div class="card" style="padding:12px 16px;">
+              <div class="card-title">
+                <span>🧩 AI Canvas rút gọn</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.78rem;">
+                <div style="background:rgba(15,23,42,0.65); padding:7px 9px; border-radius:6px;">
+                  <strong class="text-purple">Prediction (AI tạo gì):</strong><br/>Nháp 3–5 bullet khớp JD + từ khóa đã dùng + đồ án nguồn.
+                </div>
+                <div style="background:rgba(15,23,42,0.65); padding:7px 9px; border-radius:6px;">
+                  <strong class="text-amber">Judgment (Con người):</strong><br/>Quyết định bullet nào đúng sự thật, đồ án nào nhấn mạnh.
+                </div>
+                <div style="background:rgba(15,23,42,0.65); padding:7px 9px; border-radius:6px;">
+                  <strong class="text-blue">Input cần có:</strong><br/>JD + Danh sách đồ án thật (vai trò, công nghệ, kết quả) + CV gốc.
+                </div>
+                <div style="background:rgba(15,23,42,0.65); padding:7px 9px; border-radius:6px;">
+                  <strong class="text-emerald">Outcome &amp; Feedback:</strong><br/>Thời gian/CV, % câu phải sửa, số câu sai sự thật (= 0).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 6: Q&A & CLOSING ==================== -->
+    <section class="slide" data-phase="solution">
+      <div class="slide-header">
+        <div>
+          <div class="slide-kicker">KẾT LUẬN &amp; THẢO LUẬN</div>
+          <h1 class="slide-title">Cảm Ơn &amp; Hỏi Đáp (Q&amp;A)</h1>
+        </div>
+        <div class="slide-meta-time">Nhóm FreeFire</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="card highlight-blue" style="padding: 28px 32px; text-align: center;">
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">
+            NHÓM FREEFIRE · NHÂN · HẢI ANH · HIỆU · DŨNG
+          </div>
+          <div style="font-size: 2.6rem; font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em;">
+            Q &amp; A — Rất Mong Nhận Được Phản Biện!
+          </div>
+          <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 820px; margin: 0 auto; line-height: 1.5;">
+            “Không tự xây công cụ AI mới khi thị trường đã có sẵn — tập trung kiểm chứng xem <strong>Rule + AI nháp từ đồ án thật + Sinh viên duyệt từng dòng</strong> có thực sự thắng được <strong>No AI (CV cố định + Bullet Bank)</strong> hay không.”
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card highlight-rose">
+            <div class="card-title">
+              <span>📌 Vấn đề đã thu hẹp (CP4)</span>
+            </div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.45;">
+              SV CNTT năm cuối nộp nhiều đơn mất <strong>45 phút/CV</strong> (nghẽn <strong>20 phút</strong> ở bước viết lại bullet đồ án khớp từ khóa từng JD mà vẫn đúng sự thật).
+            </p>
+          </div>
+
+          <div class="card highlight-amber">
+            <div class="card-title">
+              <span>🛠 Giải pháp đề xuất (CP5–CP6)</span>
+            </div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.45;">
+              <strong>Rule</strong> lọc từ khóa thiếu → <strong>AI nháp 3–5 bullet</strong> gắn đồ án nguồn → <strong>SV duyệt từng dòng (HITL)</strong> → Mẫu cố định xuất PDF (kỳ vọng <strong>~14 phút/CV</strong>).
+            </p>
+          </div>
+
+          <div class="card highlight-emerald">
+            <div class="card-title">
+              <span>✅ Quyết định &amp; Ngưỡng dừng (CP6)</span>
+            </div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.45;">
+              <strong>GO (Pilot 2 tuần)</strong> đo đối chứng A/B với <strong>No AI</strong>. Dừng ngay nếu No AI đã &lt; 15'/CV, hoặc 2 CV liên tiếp phải sửa &gt; 50% nháp AI, hoặc lọt bullet sai sự thật.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Bar -->
+  <footer class="bottombar">
+    <div>
+      <span>Phím tắt: <strong>← / → / Space</strong> chuyển slide · <strong>1–6</strong> chọn nhanh slide · <strong>F</strong> toàn màn hình</span>
+    </div>
+    <div class="slide-dots" id="slideDots"></div>
+    <div id="slideCounter" style="font-family:var(--font-mono); font-weight:700; color:var(--text-main);">Slide 1 / 6</div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsContainer = document.getElementById('slideDots');
+    const slideCounter = document.getElementById('slideCounter');
+    const progressFill = document.getElementById('progressFill');
+    const phaseBadge = document.getElementById('phaseBadge');
+
+    let currentIndex = 0;
+
+    // Build slide dots
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (idx === 0 ? ' active' : '');
+      dot.textContent = idx + 1;
+      dot.title = 'Đến Slide ' + (idx + 1);
+      dot.onclick = () => goToSlide(idx);
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateSlideUI() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentIndex);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+
+      slideCounter.textContent = `Slide ${currentIndex + 1} / ${slides.length}`;
+      progressFill.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
+
+      const currentSlide = slides[currentIndex];
+      const phase = currentSlide.getAttribute('data-phase');
+      if (phase === 'problem') {
+        phaseBadge.textContent = 'PHẦN 1: NÊU VẤN ĐỀ & KIỂM CHỨNG (CP4)';
+        phaseBadge.className = 'phase-pill problem';
+      } else {
+        phaseBadge.textContent = 'PHẦN 2: CÁCH GIẢI QUYẾT & QUYẾT ĐỊNH (CP5–CP6)';
+        phaseBadge.className = 'phase-pill solution';
+      }
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentIndex = index;
+      updateSlideUI();
+    }
+
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) goToSlide(currentIndex - 1);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key >= '1' && e.key <= '6') {
+        goToSlide(parseInt(e.key, 10) - 1);
+      }
+    });
+
+    updateSlideUI();
+  </script>
+</body>
+</html>
+
