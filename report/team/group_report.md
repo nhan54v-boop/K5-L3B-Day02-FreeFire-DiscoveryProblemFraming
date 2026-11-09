@@ -166,43 +166,64 @@ Chưa kiểm chứng: nháp AI có thật sự giảm từ 45 xuống dưới 15
 
 ---
 
+
 ## 4. Quy trình trước/sau (CP5)
 
 ### 4.1. Quy trình hiện tại
 
-Sơ đồ (ASCII, Mermaid hoặc link ảnh trong `report/assets/`):
+Thời gian lấy từ số tự bấm giờ của Hiệu (5 lần sửa CV gần nhất, trung bình 45 phút/CV; tuần trước nộp 6 CV).
 
 ```text
+HIỆN TẠI — 6 bước, 45 phút/CV, 6/6 bước thủ công
 
+[1 Đọc JD, gạch từ khóa: 5'] → [2 Mở CV gốc và GitHub: 3'] → [3 Chọn đồ án khớp JD: 5']
+→ [4 Viết lại bullet mô tả đồ án theo JD: 20'] ← BOTTLENECK
+→ [5 Căn layout 1 trang, xuất PDF: 7'] → [6 Nộp đơn, ghi vào Google Sheets: 5']
 ```
 
 | Bước | Actor | Input | Output | Thời gian / tần suất | Ghi chú |
 |---:|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Sinh viên | JD đã chọn (từ ITviec, LinkedIn, TopCV...) | Danh sách yêu cầu và từ khóa (tech stack, kỹ năng, domain) | 5 phút/CV; ~6 CV/tuần | Gạch chân tay |
+| 2 | Sinh viên | CV gốc (Overleaf/Word/Canva), danh sách đồ án trên GitHub | CV gốc và danh sách đồ án đã mở | 3 phút/CV | |
+| 3 | Sinh viên | Từ khóa JD, danh sách đồ án | Đồ án khớp nhất với JD | 5 phút/CV | Dựa vào trí nhớ và README |
+| 4 | Sinh viên | Từ khóa JD, mô tả đồ án đã chọn | Các bullet mới khớp từ khóa JD mà vẫn đúng sự thật | **20 phút/CV** | **Bottleneck**: phải cân nhắc câu chữ nổi bật kỹ năng JD cần |
+| 5 | Sinh viên | Bullet mới, CV gốc | CV 1 trang A4 dạng PDF | 7 phút/CV | Kiểm lỗi chính tả, căn layout |
+| 6 | Sinh viên | PDF CV, thông tin công ty, link JD | Hồ sơ đã nộp; dòng mới trong Google Sheets | 5 phút/CV | Ghi bản CV đã gửi |
 
-**Bottleneck chính:**
+**Bottleneck chính:** Bước 4, viết lại bullet mô tả đồ án, 20 phút trên tổng 45 phút (khoảng 44% thời gian mỗi CV).
 
 ### 4.2. Quy trình tương lai
 
-Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người**, **boundary** ở đâu, **phương án quay về** khi AI sai.
+Các số phút dưới đây là **kỳ vọng chưa đo**, cần kiểm bằng pilot.
 
 ```text
+TƯƠNG LAI — 6 bước, khoảng 14 phút/CV (kỳ vọng), 3/6 bước thủ công
 
+[1 Dán JD vào công cụ so khớp từ khóa, đọc từ khóa còn thiếu: 2']   ← RULE
+→ [2 Chọn đồ án khớp JD từ danh sách đồ án đã chuẩn bị sẵn: 2']     ← CON NGƯỜI
+→ [3 Nháp 3–5 bullet từ đồ án đã chọn và JD, ghi đồ án nguồn: 1']   ← AI
+→ [4 Duyệt từng dòng, sửa, xóa mọi nội dung không đúng: 5']         ← CON NGƯỜI (điểm kiểm soát)
+→ [5 Đưa bullet vào mẫu CV cố định, xuất PDF: 2']                   ← RULE (mẫu cố định)
+→ [6 Sinh viên nộp, ghi vào Google Sheets: 2']                      ← CON NGƯỜI
+
+Chuẩn bị một lần (ngoài vòng lặp): tổng hợp danh sách đồ án thật (vai trò, công nghệ, kết quả) và mẫu CV cố định.
+
+BOUNDARY: AI không tự thêm kỹ năng, công nghệ hay số liệu không có trong danh sách đồ án;
+          AI không tự nộp hồ sơ; chỉ dùng dữ liệu sinh viên cung cấp.
+          Mỗi bullet phải ghi đồ án nguồn và được sinh viên duyệt trước khi xuất PDF.
+PHƯƠNG ÁN QUAY VỀ: nếu nháp sai sự thật hoặc phải viết lại trên 50% ở 2 CV liên tiếp
+          → bỏ nháp AI, dùng bản CV cố định + ngân hàng câu mô tả đồ án (No AI).
 ```
 
 ### 4.3. Before / after
 
 | Chỉ số | Trước | Sau (kỳ vọng) | Ghi chú |
 |---|---:|---:|---|
-| Số bước | | | |
-| Tổng thời gian | | | |
-| Số bước thủ công | | | |
-| Bottleneck chính | | | |
-| Rủi ro mới phát sinh | | | |
+| Số bước | 6 | 6 | Giữ số bước, đổi cách làm ở bước 1, 3, 5 |
+| Tổng thời gian | 45' | khoảng 14' | Target chính: dưới 15'. Kỳ vọng chưa đo; baseline 45' chỉ từ 1 người |
+| Số bước thủ công | 6/6 | 3/6 | Sinh viên vẫn chọn đồ án, duyệt nháp và nộp |
+| Bottleneck chính | Viết lại bullet (20') | Sinh viên duyệt và sửa nháp (5') | Chấp nhận được vì là điểm kiểm soát chất lượng; nếu duyệt kỹ hơn dự kiến thì khó đạt target |
+| Rủi ro mới phát sinh | — | AI bịa kỹ năng hoặc số liệu; nhồi từ khóa; sinh viên duyệt qua loa | Xử lý bằng boundary, ghi đồ án nguồn cho từng bullet và tiêu chí đánh giá ở v1 |
 
 ---
 
@@ -210,16 +231,22 @@ Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người*
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** | Sinh viên CNTT năm cuối ứng tuyển vị trí Fresher/Junior Backend/Fullstack, phải chỉnh CV theo từng JD |
+| **Quy trình** | Đọc JD và gạch từ khóa → mở CV gốc và danh sách đồ án trên GitHub → chọn đồ án khớp JD → viết lại bullet mô tả đồ án và kỹ năng theo từ khóa JD → căn layout 1 trang, xuất PDF → nộp và ghi vào Google Sheets |
+| **Bottleneck** | Bước viết lại bullet mô tả đồ án mất khoảng 20 phút/CV (trên tổng 45 phút), vì phải chọn câu chữ nổi bật kỹ năng JD cần mà vẫn đúng sự thật |
+| **Impact** | 45 phút/CV × 6 CV/tuần = 270 phút (4,5 giờ)/tuần/sinh viên; nhóm 4 người khoảng 18 giờ/tuần (ước tính của Hiệu); có lúc quá mệt nên nộp CV chung chung |
+| **Success Metric** (baseline → target, cách đo) | Thời gian chỉnh một CV: 45 phút (Hiệu tự bấm giờ 5 lần) → dưới 15 phút. Đo bằng sinh viên tự ghi giờ trên ít nhất 5 CV trong 2 tuần pilot. Đồng thời 100% bullet trong CV khớp với đồ án có thật (sinh viên đối chiếu từng bullet với danh sách đồ án) |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | AI không tự thêm kỹ năng, công nghệ hay số liệu không có trong dữ liệu đồ án; không tự nộp hồ sơ; chỉ dùng dữ liệu sinh viên cung cấp. Sinh viên bắt buộc đọc và duyệt từng dòng trước khi xuất PDF |
 
-Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
+**Phản biện nhận được và đề xuất xử lý** (nhóm cần xác nhận lại ở cột cuối):
 
--
+| Điểm yếu được chỉ ra | Nguồn | Đề xuất xử lý |
+|---|---|---|
+| Thời gian 45 phút/CV có thể do chưa có ngân hàng câu mô tả; template cố định có thể đã giảm thời gian mà không cần AI | AI phản biện trong bài cá nhân của Hiệu | Đưa "3 bản CV cố định + bullet bank" vào phương án No AI và đo song song (xem mục 6) |
+| Rủi ro lớn nhất là AI tự bịa kỹ năng sinh viên không có | AI phản biện trong bài cá nhân của Hiệu | Đặt boundary 100% khớp đồ án thật và bước duyệt từng dòng |
+| Metric mới đo tốc độ, chưa đo chất lượng: CV nhanh hơn nhưng kém hơn thì sao? | Phản biện bổ sung (Claude) cho v0 | Thêm metric chất lượng ở v1 (tỉ lệ bullet phải sửa lại, số bullet sai sự thật) |
+| Baseline chỉ là dữ liệu của 1 người (5 lần) | Phản biện bổ sung (Claude) cho v0 | Thu thêm số bấm giờ của ít nhất 2 người khác trước khi pilot |
+| "100% khớp thực tế" chưa nói rõ cách đo | Phản biện bổ sung (Claude) cho v0 | Định nghĩa cách đo: mỗi bullet ghi đồ án nguồn, sinh viên tick xác nhận |
 
 ---
 
@@ -227,38 +254,38 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô:
+Bài của nhóm nằm ở ô: **độ mơ hồ trung bình–cao, độ phức tạp thấp** → Workflow có AI ở một bước (kèm Rule ở bước kiểm từ khóa).
 
-Vì sao:
+Vì sao: cùng một đồ án có nhiều cách viết bullet đều chấp nhận được và phụ thuộc từng JD (mơ hồ cao). Quy trình chỉ có 6 bước cố định, một người làm, hai nguồn dữ liệu là JD và danh sách đồ án, không rẽ nhánh (phức tạp thấp).
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | | | | |
-| **Rule** | | | | |
-| **Workflow** | | | | |
-| **Agent** | | | | |
+| **No AI** (sửa quy trình) | 3 bản CV cố định (Java Backend, Node.js Backend, Fullstack) + ngân hàng câu mô tả đồ án trong Google Docs; mẫu CV có sẵn (ví dụ mẫu theo vị trí của TopCV) cho phần layout | JD khớp một trong các bản cố định, chỉ cần đổi vài dòng | Vẫn phải tinh chỉnh câu chữ khi JD lệch bản cố định; chưa có số đo thời gian cho phương án này | Giữ làm phương án so sánh và dùng khi đủ |
+| **Rule** | Công cụ so khớp từ khóa JD với CV (như Match Report của Jobscan hoặc Teal bản free) để liệt kê từ khóa còn thiếu | Bước đọc JD và kiểm từ khóa | Không viết được câu; điểm match chỉ là ước lượng, không phải điểm của ATS thật; dễ nhồi từ khóa | **Dùng cho bước kiểm từ khóa** |
+| **Workflow** | Rule kiểm từ khóa → AI nháp 3–5 bullet từ dữ liệu đồ án thật và JD → sinh viên duyệt từng dòng → xuất PDF → sinh viên nộp | Các bước cố định, AI chỉ làm phần ngôn ngữ ở bước 4 | Nháp nhạt hoặc sai sự thật; sinh viên lười duyệt | **Chọn** |
+| **Agent** | AI tự quét JD, tự chọn đồ án, tự sửa CV và tự nộp | Khi bước tiếp theo không đoán trước được | Nộp nhầm thông tin; bịa kỹ năng; khó kiểm soát | Không chọn |
 
-**Mức chọn:**
+**Mức chọn:** Workflow (có Rule ở bước kiểm từ khóa).
 
-**Vì sao không chọn mức đơn giản hơn:**
+**Vì sao không chọn mức đơn giản hơn:** Đây là điểm nhóm chưa chứng minh được. Lập luận hiện có chỉ dựa trên phân tích của Hiệu: dù có bản cố định, bước tinh chỉnh câu chữ theo từng JD vẫn tốn thời gian, đúng phần mà No AI và Rule không viết được. Nhóm chưa có phỏng vấn thật hay số đo cho phương án No AI, và research ở mục 3.3 cho thấy bước này đã có công cụ hỗ trợ. Vì vậy mức Workflow được chọn **có điều kiện**: pilot phải đo song song No AI và Workflow trên các JD tương đương; nếu No AI đã đạt dưới 15 phút/CV thì quay về No AI.
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | |
-| **Judgment** — con người cân nhắc, quyết định gì? | |
-| **Action** — hành động cuối cùng là gì, ai làm? | |
-| **Outcome** — đo kết quả bằng gì? | |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | |
+| **Prediction** — AI dự đoán / tạo ra gì? | Bản nháp 3–5 bullet mô tả đồ án khớp JD, kèm từ khóa JD đã dùng và đồ án nguồn của từng bullet |
+| **Judgment** — con người cân nhắc, quyết định gì? | Sinh viên quyết định bullet nào đúng sự thật, đồ án nào nên nhấn cho JD này, từ khóa nào đáng đưa vào |
+| **Action** — hành động cuối cùng là gì, ai làm? | Sinh viên sửa bullet, căn layout, xuất PDF và nộp |
+| **Outcome** — đo kết quả bằng gì? | Thời gian chỉnh mỗi CV; tỉ lệ bullet phải sửa lại; số bullet có nội dung không có trong dữ liệu (mục tiêu 0); về lâu dài, tỉ lệ CV qua vòng hồ sơ |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Nội dung JD (có sẵn), danh sách đồ án với vai trò, công nghệ và kết quả thật (cần tổng hợp một lần từ GitHub/README), CV gốc (có sẵn) |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Phần sinh viên sửa trong nháp mỗi lần; bullet bị xóa vì sai sự thật; phản hồi của HR hoặc người review CV (nếu có) |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng:
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)?** **Augment.** Bằng chứng: phản biện của AI trong bài của Hiệu đề xuất agent tự nộp, và Hiệu không đồng ý vì rủi ro gửi nhầm thông tin; sinh viên muốn tự chọn JD và duyệt CV cuối. Đây mới là quan điểm của người đặt vấn đề.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót?** **Báo nhầm** (thêm kỹ năng hoặc số liệu không có) tệ hơn: sinh viên có thể bị hỏi ngược lại trong phỏng vấn và mất uy tín. Bỏ sót chỉ làm bullet kém nổi bật hoặc thiếu từ khóa. Thiết kế xử lý: AI chỉ dùng dữ liệu đồ án do sinh viên cung cấp, mỗi bullet ghi đồ án nguồn, sinh viên duyệt từng dòng và xóa mọi nội dung không nhớ đã làm.
 
 ---
 
@@ -266,29 +293,32 @@ Vì sao:
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** | |
-| **AI intervention point** | |
-| **Mức chọn** | No AI / Rule / Workflow / Agent |
-| **Rủi ro & người kiểm tra** | |
+| **Actor** | Sinh viên CNTT năm cuối ứng tuyển Fresher/Junior Backend/Fullstack, nộp nhiều đơn và chỉnh CV riêng cho từng JD |
+| **Quy trình** | Đọc JD → mở CV gốc và danh sách đồ án → chọn đồ án khớp JD → viết lại bullet mô tả đồ án → căn layout, xuất PDF → nộp và ghi Google Sheets |
+| **Bottleneck** | Viết lại bullet mô tả đồ án theo từ khóa JD, khoảng 20 phút/CV (trên tổng 45 phút) |
+| **Impact** | 45 phút/CV × 6 CV/tuần = 270 phút/tuần/sinh viên; có lúc nộp CV chung chung vì mệt |
+| **Success Metric** (baseline → target, cách đo) | (1) Thời gian chỉnh một CV: 45' → dưới 15', sinh viên tự ghi giờ ≥ 5 CV trong 2 tuần pilot. (2) Sinh viên phải viết lại dưới 50% nháp AI. (3) 100% bullet có đồ án nguồn và được sinh viên xác nhận đúng sự thật. (4) Tỉ lệ qua vòng hồ sơ không thấp hơn 4 tuần trước pilot (chỉ theo dõi, khó đo chắc vì số đơn ít) |
+| **Boundary** | AI không tự thêm kỹ năng, công nghệ hay số liệu không có trong danh sách đồ án; không tự nộp hồ sơ; chỉ dùng dữ liệu sinh viên cung cấp; sinh viên duyệt từng dòng trước khi xuất PDF |
+| **AI intervention point** | Sau khi sinh viên đã chọn đồ án khớp JD và trước khi viết bullet |
+| **Mức chọn** | Workflow (có Rule ở bước kiểm từ khóa), kèm phương án đối chứng No AI |
+| **Rủi ro & người kiểm tra** | AI bịa kỹ năng hoặc số liệu; nhồi từ khóa; duyệt qua loa. Sinh viên đối chiếu từng bullet với danh sách đồ án; một thành viên khác trong nhóm đọc chéo 1 CV/tuần trong pilot |
 
 **Thay đổi so với v0 và lý do:**
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| | | | |
+| Actor | Sinh viên CNTT năm cuối ứng tuyển Fresher/Junior | Thêm: nộp nhiều đơn và chỉnh CV riêng cho từng JD | Người dùng CV chung hoặc bản cố định có thể đã đủ với No AI. Tín hiệu này mới đến từ mục 3.2 và lập luận ở mục 6, cần xác nhận bằng phỏng vấn thật |
+| Success Metric | Chỉ đo thời gian và 100% khớp thực tế | Thêm tỉ lệ viết lại nháp, số bullet có nguồn, theo dõi tỉ lệ qua vòng hồ sơ | Phản biện: CV nhanh hơn nhưng kém hơn thì không đạt |
+| AI intervention point, Mức chọn, Rủi ro & người kiểm tra | Chưa có | Đã bổ sung | Hoàn tất sau khi chọn mức can thiệp ở mục 6 |
 
-**Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
+**Tiêu chí đánh giá đầu ra của AI (bản nháp bullet):**
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
 |---:|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | Đúng sự thật | Mọi bullet truy được về một đồ án có thật trong danh sách; không có công nghệ hay số liệu lạ | Có kỹ năng, công nghệ hoặc số liệu không có trong danh sách đồ án |
+| 2 | Khớp JD, không bỏ sót | Mọi từ khóa bắt buộc của JD mà sinh viên thực sự có đều xuất hiện trong nháp | Thiếu từ khóa bắt buộc mà sinh viên có trong đồ án |
+| 3 | Không nhồi từ khóa | Mỗi bullet là một câu đọc tự nhiên, tối đa 2 dòng, có hành động và kết quả | Chỉ liệt kê từ khóa hoặc lặp từ khóa nhiều lần |
+| 4 | Vai trò cá nhân rõ | Bullet nêu việc cụ thể của sinh viên trong đồ án | Chỉ nói chung chung "nhóm đã làm", không rõ phần của mình |
 
 ---
 
@@ -298,31 +328,54 @@ Vì sao:
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | | |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | | |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | | |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | | |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | Trung bình | Bottleneck rõ ở bước viết bullet, nhưng bằng chứng thật mới là số bấm giờ của 1 người; chưa có phỏng vấn hay poll thật. |
+| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | Trung bình | Chỉ cần sửa văn bản, không phải học công cụ mới. Nhưng phải chuẩn bị danh sách đồ án một lần, và có nguy cơ duyệt qua loa |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | Thấp | Công cụ đã có (Teal, Jobscan, Kickresume hoặc prompt chuẩn); dữ liệu đồ án có sẵn trên GitHub; không cần xây gì |
+| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | Trung bình | Gói free có giới hạn (Teal giới hạn AI credits, Jobscan 5 lần quét, AI Writer của Kickresume ở gói trả phí). Đưa CV và dữ liệu cá nhân vào công cụ bên thứ ba cần xem điều khoản riêng tư. Sinh viên tự vận hành |
 
 ### 8.2. Kết luận
 
-**Quyết định:** Go / Not Yet / No-Go
+**Quyết định:** **Go, phạm vi nhỏ** (pilot 2 tuần, chưa xây gì).
 
-**Lý do:**
+**Lý do:** Không có rủi ro mức Cao. Feasibility thấp (công cụ có sẵn). Hai rủi ro Trung bình (Value, Viability) và Usability kiểm được ngay trong pilot, và pilot cũng chính là phép kiểm chứng đối chiếu với phương án No AI. Quyết định này dựa trên dữ liệu thật còn hạn chế (1 người bấm giờ, chưa có phỏng vấn thật), nên được coi là có điều kiện.
 
-**Nếu Go — pilot nhỏ nhất:**
+**Nếu Go — pilot nhỏ nhất (2 tuần):**
 
-**Nếu Not Yet — cần kiểm chứng gì trước:**
+- Không xây gì. Mỗi người tham gia (Hiệu và ít nhất 2 thành viên khác) chỉnh ít nhất 5 CV cho các JD tương đương, luân phiên giữa hai cách: No AI (bản CV cố định + ngân hàng câu mô tả) và Workflow (Rule kiểm từ khóa + prompt chuẩn hoặc công cụ có gói free + sinh viên duyệt).
+- Ghi giờ từng CV, ghi tỉ lệ nháp phải viết lại, chấm nháp theo 4 tiêu chí ở mục 7.
+- Trước pilot: thu thêm số bấm giờ baseline của ít nhất 2 người; phỏng vấn thật 2–3 sinh viên năm cuối ngoài nhóm theo The Mom Test và poll 5–10 người; đọc điều khoản riêng tư của công cụ định dùng.
 
-**Nếu No-Go — nên làm gì thay AI:**
+**Nếu Not Yet — cần kiểm chứng gì trước:** Không áp dụng cho quyết định hiện tại. Nếu phỏng vấn thật phản bác bottleneck (đa số dùng CV chung hoặc mất dưới 15 phút), chuyển sang Not Yet và kiểm chứng lại actor.
 
-**Ngưỡng dừng** (nếu sau … mà … thì quay về …):
+**Nếu No-Go — nên làm gì thay AI:** Dùng bản CV cố định theo hướng Java Backend, Node.js Backend, Fullstack + ngân hàng câu mô tả đồ án + mẫu CV có sẵn.
+
+**Ngưỡng dừng:**
+
+- Nếu No AI đạt dưới 15 phút/CV (trung vị ≥ 5 CV) → quay về No AI, không dùng AI.
+- Nếu 2 CV liên tiếp phải viết lại trên 50% bản nháp → dừng Workflow, quay về No AI.
+- Nếu có 1 bullet sai sự thật mà sinh viên không phát hiện trước khi nộp → dừng pilot, xem lại bước duyệt.
+- Nếu công cụ không rõ về dữ liệu cá nhân hoặc buộc trả phí để dùng được → không dùng công cụ đó, thử prompt chuẩn hoặc quay về No AI.
 
 ---
 
 ## 9. Hạn chế và hướng tiếp theo
 
--
+- Bằng chứng thật còn mỏng: baseline 45 phút/CV chỉ từ 5 lần bấm giờ của 1 người (Hiệu). Chưa có phỏng vấn thật và chưa có poll.
+- Điểm chấm shortlist ở CP3, điểm trong Assumption Map và các số phút của quy trình tương lai là ước lượng, chưa đo.
+- Nhóm chưa tự dùng thử các công cụ ở mục 3.3; thông tin lấy từ trang chính thức và bài đánh giá bên thứ ba, giá và tính năng có thể đổi.
+- Chưa đo được chất lượng CV theo nghĩa "qua vòng hồ sơ", vì số đơn ít và nhà tuyển dụng ít phản hồi.
+- Hướng tiếp theo: các candidate cùng chuỗi ứng tuyển (đọc và lọc JD, chuẩn bị phỏng vấn) cho vòng sau; bài "phân loại ca lỗi production" chỉ xét lại nếu nhóm có quyền tiếp cận dữ liệu thật.
 
 ## 10. Tài liệu tham khảo
 
--
+Ngày kiểm tra các link: 09/11/2026.
+
+- Teal AI Resume Builder: https://www.tealhq.com/free và https://tealhq.com/resume-builder
+- Jobscan Match Report: https://jobscan.co/resume-matcher và https://www.jobscan.co/resume-checker
+- Kickresume (AI Writer, giá): https://www.kickresume.com/pricing
+- TopCV, tạo CV online theo mẫu: https://www.topcv.vn/cach-tao-cv-online-tren-topcv
+- Hướng dẫn dùng AI viết CV (tiếng Việt, blog): https://findskill.ai/vi/blog/ai-viet-cv-xin-viec-2026-huong-dan-tieng-viet/
+- Rezi, bài tổng hợp công cụ viết CV (blog của nhà bán công cụ): https://www.rezi.ai/posts/rezi-alternatives
+- Rob Fitzpatrick, *The Mom Test* (3 luật phỏng vấn dùng ở mục 3.2)
+- Google PAIR, *People + AI Guidebook* (hai câu hỏi augment/automate và báo nhầm/bỏ sót ở mục 6.4)
+- Các bài cá nhân của Nhân, Hải Anh, Hiệu, Dũng; `CHECKPOINTS.md` và bài mẫu của môn học
