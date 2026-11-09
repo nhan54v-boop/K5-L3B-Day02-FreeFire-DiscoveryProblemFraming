@@ -183,16 +183,16 @@ HIỆN TẠI — 45 phút/sprint
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
+| Pitch Problem Card | Pitch Card #10 (Phân loại ca lỗi production, baseline 115' và 130') cùng #11, #12 | Vào shortlist 4 bài của nhóm, đạt 27/35 điểm (đứng thứ 2 sau bài #7 của Hiệu) |
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt cho Hiệu (Card #7): *"Có sẵn 2–3 bản CV cố định + bullet bank thì mất 10–15' là xong, có cần viết lại theo từng JD không? Và nếu JD lệch năng lực thì làm sao tránh bịa CV?"* | Nhóm đưa giả định "CV cố định + bullet bank chưa đủ" vào Assumption Map để kiểm chứng, giữ No AI làm đối chứng và thêm bước lọc JD phù hợp năng lực |
+| Nhận phản biện | Câu hỏi tôi nhận được từ Hiệu & Nhân: *"Trong phạm vi lab và pilot 2 tuần, nhóm lấy đâu ra log production và đội QA thật để kiểm chứng bài #10?"* | Tôi đã sửa gì: Thừa nhận hạn chế về quyền truy cập dữ liệu (Feasibility trong lab = 2/5); đồng ý cất #10 vào hướng tiếp theo và chọn bài #7 của Hiệu |
+| Gom cluster / cây OST | Cùng nhóm gom 12 bài thành 4 cluster và rà soát các nhánh trên cây OST | Gạch bỏ 2 ý là solution đội lốt opportunity: *"Công cụ AI tự viết CV"* và *"Agent tự quét JD và tự nộp đơn"* |
+| Chọn candidate problem | Chấm điểm 7 tiêu chí cho 4 bài shortlist và thảo luận chốt bài toán nhóm | Thống nhất chọn #7 (33/35 điểm) vì cả nhóm đều hiểu quy trình và kiểm chứng được ngay |
+| Kiểm chứng / research | Trả lời phỏng vấn nội bộ buổi 3 (The Mom Test) và kiểm tra chéo Teal, Jobscan, Kickresume | Đóng góp tín hiệu phản bác: 2 CV cố định + bullet bank chỉ mất 10–15', và phải xóa số liệu không nhớ để tránh bị hỏi vặn → Nhóm thu hẹp actor và đặt boundary chống bịa số liệu |
+| Quy trình nhóm | Đề xuất bổ sung **Bước 1 (AI): Lọc các JD phù hợp với thông tin (kỹ năng, dự án) hiện có** vào quy trình tương lai (CP5) | Chuẩn hóa quy trình tương lai thành 7 bước (~14'/CV), loại sớm JD lệch năng lực để tránh cố bịa CV khớp JD |
+| Problem Statement | Góp ý bản v0 (CP5) và phụ trách viết bản v1 kèm 4 tiêu chí đánh giá (eval) ở CP6 | Bổ sung *AI intervention point*, thu hẹp *Actor*, thêm metric chất lượng (viết lại < 50%, 100% bullet có nguồn) và 4 tiêu chí Pass/Fail |
+| Mức can thiệp AI | Phụ trách mục 6 (CP6): ma trận mơ hồ × phức tạp, so sánh 4 mức, AI Canvas và 2 câu hỏi Google PAIR | Chốt mức **Workflow có điều kiện** (kèm Rule), chọn *Augment* và ưu tiên chặn lỗi *Báo nhầm* (bịa kỹ năng/số liệu) |
+| Quyết định | Phụ trách mục 8 (CP6): đánh giá 4 rủi ro, kế hoạch pilot 2 tuần, ngưỡng dừng và làm slide nhóm | Nhóm chốt **Go, phạm vi nhỏ** (pilot 2 tuần đo A/B giữa No AI và Workflow) kèm 4 ngưỡng dừng rõ ràng |
 
 ---
 
@@ -200,12 +200,12 @@ HIỆN TẠI — 45 phút/sprint
 
 | Checkpoint | Tôi dùng AI để làm gì? | AI hữu ích ở đâu? | AI sai hoặc hời hợt ở đâu? | Tôi sửa gì bằng nhận định của mình? |
 |---|---|---|---|---|
-| CP1 Scan | | | | |
-| CP2 Problem Card | | | | |
-| CP4 Research | | | | |
-| CP5 Quy trình | | | | |
-| CP5–6 Problem Statement | | | | |
-| CP6 Mức can thiệp / quyết định | | | | |
+| CP1 Scan | Gợi ý thêm problem sau khi tự liệt kê 8 ý | Gợi ý thêm ý #9 (rà soát golden test set RAG) và #10 (pre-check MR về VRAM) sát thực tế | Đưa ý quá rộng và mang tính giải pháp (*"Trợ lý AI tối ưu toàn bộ pipeline"*) | Bỏ ý chung chung; tự viết lại #9, #10 thành Job Story kèm số phút thật |
+| CP2 Problem Card | Đóng vai PM hoài nghi phản biện Card #1 | Chỉ ra baseline 120' chưa tách bước kéo log và bước phân tích; nhắc rủi ro "mù kép" | Gợi ý tự động gắn nhãn lỗi và đẩy thẳng vào tập retrain | Tách bước kéo log (20', dùng script/Rule) và gom cụm (75', dùng AI); giữ boundary người duyệt |
+| CP4 Research | Tra cứu nhanh tính năng và giá của Teal, Jobscan, Kickresume | Tóm tắt nhanh các bước mà từng công cụ hỗ trợ | Nói như thể gói free dùng thoải mái và điểm Match Score quyết định đậu ATS | Tự mở link kiểm chứng: ghi rõ giới hạn gói free và việc ATS thật không chấm điểm % |
+| CP5 Quy trình | Rà soát luồng quy trình tương lai 7 bước | Căn chỉnh bảng quy trình và thứ tự bước rõ ràng | Gộp bước "chọn đồ án" vào AI và bỏ qua trường hợp JD đòi kỹ năng sinh viên không có | Tách riêng Bước 1 (AI lọc JD phù hợp năng lực hiện có), Bước 3 (SV tự chọn đồ án), Bước 4 (AI nháp bullet) |
+| CP5–6 Problem Statement | Tìm lỗ hổng trong Problem Statement v0 | Chỉ ra metric v0 mới đo tốc độ, chưa đo chất lượng và cách kiểm chứng "đúng sự thật" | Đề xuất lấy điểm % Match Rate của Jobscan làm metric chất lượng | Bác bỏ Match Rate vì dễ nhồi từ khóa; đổi sang đo tỉ lệ sửa nháp (< 50%) và 100% bullet gắn đồ án nguồn |
+| CP6 Mức can thiệp / quyết định | Rà soát AI Canvas và ngưỡng dừng | Hệ thống hóa gọn các mục Prediction – Judgment – Action | Khuyên dùng Agent tự quét JD và sửa CV hàng loạt | Giữ mức Workflow có điều kiện đối chứng No AI; đặt ngưỡng dừng nếu No AI < 15'/CV hoặc có 1 câu bịa lọt qua |
 
 ---
 
@@ -215,20 +215,39 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
 
+Khi nghe Hiệu, Hải Anh và Nhân pitch ở CP3, tôi nhận ra bài toán phù hợp nhất cho nhóm không phải là bài có kỹ thuật phức tạp nhất, mà là bài có quy trình rõ và cả nhóm đều kiểm chứng được ngay. Bài phân loại lỗi AI production của tôi tuy có số bấm giờ thật nhưng các bạn khác không có dữ liệu để thử cùng; trong khi bài chỉnh CV theo JD của Hiệu sát với trải nghiệm sinh viên nên cả nhóm đối chiếu được ngay.
+
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+
+Có, lúc mới vẽ cây OST ở CP3, nhóm từng viết các nhánh như *"Công cụ AI tự viết CV"* và *"Agent tự quét JD và tự nộp đơn"*. Khi rà lại quy tắc nhánh OST chỉ chứa pain của người dùng, nhóm đã gạch bỏ cả hai. Đến CP4, sau khi xem Teal, Jobscan và thử prompt chuẩn, nhóm cũng bỏ hẳn ý định tự code tool mới vì công cụ trên thị trường đã giải quyết đúng bước nghẽn.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
 
+Ở CP3, ban đầu tôi muốn giữ Card #10 (Phân loại lỗi production) vì đã đo baseline kỹ. Nhưng khi Hiệu và Nhân hỏi nhóm lấy đâu ra log thực tế và đội QA để kiểm chứng trong 2 tuần pilot, tôi thấy rõ điểm nghẽn Feasibility trong phạm vi lớp học nên đồng ý rút #10 về backlog và chọn #7. Ngoài ra ở CP5, từ phản biện về việc cố sửa CV theo JD lạ dễ dẫn tới khai khống kỹ năng, tôi đã bổ sung Bước 1 (AI lọc JD phù hợp với kỹ năng và dự án hiện có) vào đầu quy trình.
+
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+
+Tôi bất ngờ vì ngay trong 3 buổi phỏng vấn nội bộ đã có sự phân hóa rõ: người nộp ít đơn như Nhân chỉ cần 1 CV chung, còn bản thân tôi dùng 2 CV cố định + bullet bank thì đa số JD chỉ mất 10–15 phút. Bên cạnh đó, chính trang Jobscan cũng ghi rõ ATS thật không chấm điểm phần trăm như Match Rate. Nhờ vậy nhóm thu hẹp actor và giữ No AI làm phương án đối chứng.
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
+Khó nhất là đặt Success Metric và Boundary sao cho việc tăng tốc độ không làm giảm chất lượng hoặc dẫn tới bịa thông tin. Nếu chỉ đo thời gian (< 15 phút) hay điểm khớp từ khóa, người dùng rất dễ nhồi từ khóa. Nhóm phải chốt lại bằng các tiêu chí kiểm soát thật: chỉ sửa CV cho JD đã lọc phù hợp năng lực, tỉ lệ viết lại nháp < 50% và 100% bullet có gắn đồ án nguồn.
+
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
 
+Nếu làm lại, tôi sẽ khảo sát thêm 5–10 bạn ngoài nhóm ngay tại lớp ở CP4 để có số liệu rộng hơn. Tôi cũng sẽ phản biện mạnh hơn ở giả định #3 bằng cách đề nghị nhóm lấy 1–2 JD thật bấm giờ thử ngay phương án Bullet Bank (No AI) tại chỗ, thay vì để bằng chứng ở mức 1/5 rồi chờ tới pilot mới đo.
+
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
+
+Bài toán của nhóm nhắm tới sinh viên CNTT năm cuối nộp nhiều đơn ứng tuyển Fresher/Junior và phải chỉnh CV riêng theo từng JD, hiện mất trung bình 45 phút/CV. Trong quy trình 6 bước thủ công hiện tại, bottleneck nằm ở bước 4 — viết lại bullet mô tả đồ án khớp từ khóa JD mà vẫn đúng sự thật (chiếm 20 phút, tức 44% thời gian). Quy trình tương lai được chuẩn hóa thành 7 bước: Bước 1 dùng AI lọc các JD phù hợp với kỹ năng và dự án hiện có (loại bỏ JD lệch để tránh bịa CV), Bước 2 dùng Rule kiểm từ khóa thiếu, Bước 3 sinh viên chọn đồ án, Bước 4 AI nháp 3–5 bullet kèm đồ án nguồn, Bước 5 sinh viên duyệt từng dòng (HITL), Bước 6 đưa vào mẫu cố định xuất PDF và Bước 7 tự nộp. Success Metric là giảm thời gian xuống dưới 15 phút/CV (đo trên ≥ 5 CV trong 2 tuần pilot), tỉ lệ phải sửa lại nháp dưới 50%, và 100% bullet truy được về đồ án thật. Boundary bắt buộc là chỉ chỉnh CV cho các JD đã qua bước lọc phù hợp năng lực, AI không tự thêm kỹ năng/số liệu lạ, không tự nộp đơn và sinh viên phải duyệt từng dòng trước khi xuất PDF. Nhóm chọn mức **Workflow kết hợp Rule** (hỗ trợ/augment thay vì Agent tự động hóa) vì quy trình 7 bước cố định, độ phức tạp thấp và cần kiểm soát chặt lỗi "báo nhầm" (bịa thông tin gây mất uy tín khi phỏng vấn). Quyết định cuối cùng là **Go, phạm vi nhỏ**: chạy pilot 2 tuần bằng công cụ/prompt miễn phí có sẵn, đo đối chứng A/B với No AI (3 CV cố định + bullet bank), và dừng ngay để quay về No AI nếu No AI đã đạt < 15'/CV, hoặc 2 CV liên tiếp phải sửa > 50% nháp, hoặc lọt bất kỳ thông tin sai sự thật nào.
 
 ---
 
 ## 7. Tài liệu tham khảo
 
--
+- Tài liệu môn học: [CHECKPOINTS.md](../../CHECKPOINTS.md), [docs/01-worksheet.md](../../docs/01-worksheet.md), [docs/02-deliverable-example.md](../../docs/02-deliverable-example.md), [RUBRIC.md](../../RUBRIC.md), [RULES.md](../../RULES.md).
+- Báo cáo nhóm FreeFire: [report/team/group_report.md](../team/group_report.md) và bài cá nhân của Hiệu, Hải Anh, Nhân.
+- Framework: Rob Fitzpatrick (*The Mom Test*), Teresa Torres (*Opportunity Solution Tree*), Anthropic (*Building Effective Agents*), Agrawal et al. (*AI Canvas*), Google PAIR (*People + AI Guidebook*).
+- Công cụ khảo sát (09/11/2026): Teal (https://www.tealhq.com/free), Jobscan (https://jobscan.co/resume-matcher, https://www.jobscan.co/resume-checker), Kickresume (https://www.kickresume.com/pricing), TopCV (https://www.topcv.vn/cach-tao-cv-online-tren-topcv).
+
+
