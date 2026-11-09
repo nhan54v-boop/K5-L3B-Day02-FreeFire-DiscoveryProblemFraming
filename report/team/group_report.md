@@ -97,10 +97,6 @@ Shortlist gồm 4 card mà mỗi thành viên chọn pitch (#7, #10, #4, #1). T�
 | 5 | Có thể giữ bản nháp chỉ dựa trên đồ án có thật, không bịa kỹ năng hay số liệu | Feasibility | 4 | 3 | Kiểm trong pilot |
 | 6 | Đưa dữ liệu đồ án và CV vào công cụ AI chấp nhận được về riêng tư và chi phí (gói free có giới hạn) | Viability | 3 | 3 | Kiểm sau |
 
-Giả định nhóm kiểm chứng trong buổi này: #1, #2, #3 (và #4 nếu còn thời gian).
-
-*Cơ sở điểm "bằng chứng": #1, #2 chỉ có số bấm giờ của Hiệu (5 lần). #3 mới là câu hỏi Hiệu nêu ở CP2, chưa có dữ liệu. #5 và #6 có thêm thông tin từ research ở 3.3 (công cụ đã có, có gói free giới hạn, nguồn hướng dẫn nhắc rủi ro AI tự bịa). Điểm "Quan trọng" là đánh giá của nhóm, cần thống nhất lại.*
-
 ### 3.2. Kiểm chứng
 
 Cách đã dùng: **Log (tự bấm giờ, dữ liệu thật)** và **Phỏng vấn nội bộ nhóm** theo The Mom Test.
