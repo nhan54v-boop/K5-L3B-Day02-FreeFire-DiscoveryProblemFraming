@@ -6,14 +6,13 @@
 
 - Họ tên: Mai Xuân Nhân
 - MSSV: 2A202604006
-- Vai trò: Sinh viên đại học
 - Lớp: L3B
 - Tên nhóm: FreeFire
 - Link repo nhóm: [K5-L3B-Day02-FreeFire-DiscoveryProblemFraming](https://github.com/nhan54v-boop/K5-L3B-Day02-FreeFire-DiscoveryProblemFraming)
 
 ### Bối cảnh học tập
 
-Tôi thường phải đọc tài liệu dài trong thời gian giới hạn trước deadline, gồm giáo trình, slide bài giảng, PDF, bài báo khoa học và hướng dẫn bài tập. Công việc hằng tuần có thể gồm đọc tài liệu giảng viên cung cấp, tìm hiểu thuật ngữ chuyên ngành, ghi chú kiến thức, đối chiếu nhiều nguồn, thảo luận nhóm, hoàn thành bài tập và chuẩn bị cho buổi học hoặc kiểm tra.
+Tôi là sinh viên đại học, tôi thường phải đọc tài liệu dài trong thời gian giới hạn trước deadline, gồm giáo trình, slide bài giảng, PDF, bài báo khoa học và hướng dẫn bài tập. Công việc hằng tuần có thể gồm đọc tài liệu giảng viên cung cấp, tìm hiểu thuật ngữ chuyên ngành, ghi chú kiến thức, đối chiếu nhiều nguồn, thảo luận nhóm, hoàn thành bài tập và chuẩn bị cho buổi học hoặc kiểm tra.
 
 Hai vấn đề ban đầu tôi muốn kiểm chứng:
 
