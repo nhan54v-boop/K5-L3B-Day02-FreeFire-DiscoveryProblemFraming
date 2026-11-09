@@ -15,7 +15,7 @@
 | 1 | Mai Xuân Nhân | 2A202604006 | Trưởng nhóm | [nhan54v-boop](https://github.com/nhan54v-boop) |
 | 2 | Lê Hải Anh | 2A202603986 | Thành viên | [haianh020505](https://github.com/haianh020505) |
 | 3 | Vũ Huy Hiệu | 2A202603979 | Thành viên | [hieunhangia](https://github.com/hieunhangia) |
-| 4 | Trần Anh Dũng | 2A202604037 | ghi chép, người phản biện chính | [tad-4963](https://github.com/tad-4963) |
+| 4 | Trần Anh Dũng | 2A202604037 | Thành viên | [tad-4963](https://github.com/tad-4963) |
 
 Không ghi email hay số điện thoại vào bảng này, vì repo có thể để public.
 
@@ -28,7 +28,7 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 | CP3 — Hội tụ nhóm | Mai Xuân Nhân | — | Cluster, cây OST, bảng chấm điểm |
 | CP4 — Kiểm chứng | Lê Hải Anh | Mai Xuân Nhân | Assumption map, snapshot hoặc survey |
 | CP4 — Research | Lê Hải Anh | Mai Xuân Nhân | Bảng research có link |
-| CP5 — Quy trình trước/sau | Vũ Huy Hiệu | Mai Xuân Nhân | Quy trình + bảng before/after |
+| CP5 — Quy trình trước/sau | Vũ Huy Hiệu | Mai Xuân Nhân, Trần Anh Dũng | Quy trình + bảng before/after |
 | CP5 — Problem Statement v0 | Vũ Huy Hiệu | Mai Xuân Nhân | Problem Statement v0 |
 | CP6 — Mức can thiệp + Problem Statement v1 | Trần Anh Dũng | Mai Xuân Nhân | Ma trận, AI Canvas, eval, Problem Statement v1 |
 | CP6 — Quyết định | Trần Anh Dũng | Mai Xuân Nhân | 4 rủi ro + Go/Not Yet/No-Go |
@@ -63,18 +63,18 @@ Cp3 trong group_report.md
 **Phần việc phụ trách:**
 
 - Xây dựng bộ slide trình chiếu và thuyết trình tương tác của nhóm.
-- Phản biện phương án giải quyết, đóng góp hoàn thiện quy trình tương lai CP5 (bổ sung bước AI lọc JD phù hợp để tránh bịa CV) và mức can thiệp AI CP6.
+- Phản biện phương án giải quyết, đóng góp hoàn thiện quy trình tương lai CP5 và mức can thiệp AI CP6.
 
 **Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
 
 - Hoàn thành báo cáo cá nhân: scan 10 problem cards, đề xuất Candidate #10 (Phân loại ca lỗi production) và tham gia pitch, thảo luận hội tụ nhóm ở CP3.
-- Trực tiếp lập trình và hoàn thiện toàn bộ file slide thuyết trình với giao diện hiện đại, responsive, trực quan hóa toàn bộ hành trình CP4–CP6 và quy trình Trước/Sau phục vụ thuyết trình 6 phút.
+- Trực tiếp xây dựng và hoàn thiện slide thuyết trình với giao diện hiện đại, responsive, trực quan hóa toàn bộ hành trình CP4–CP6 và quy trình Trước/Sau phục vụ thuyết trình 6 phút.
 - Cập nhật quy trình tương lai trong: đưa bước AI lọc các JD phù hợp với năng lực hiện có ngay từ đầu, chuẩn hóa quy trình thành 7 bước nhằm triệt tiêu nguy cơ sinh viên/AI cố tình bịa CV để khớp với JD lệch.
 
 **Bằng chứng** :
 
 - Báo cáo cá nhân: `report/individual/2A202604037_TranAnhDung.md` .
-- File slide thuyết trình: `report/team/slides.html` .
+- Báo cáo nhóm: `report\team\group_report.md`.
   - Mục 2.1 , Mục 2.4 .
   - Mục 3.2 .
   - Mục 4.2, 4.3 và Mục 5, 6, 7.
