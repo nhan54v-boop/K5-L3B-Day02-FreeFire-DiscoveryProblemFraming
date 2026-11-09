@@ -80,17 +80,7 @@ Các card dưới đây là bản nháp để tôi kiểm tra lại. Quy trình 
 
 Quy trình nháp hiện tại:
 
-```text
-THỜI GIAN CHƯA ĐO — cần thay "..." bằng số phút quan sát
-
-[1 Đọc yêu cầu/mục tiêu: ... phút]
-→ [2 Xem cấu trúc tài liệu: ... phút]
-→ [3 Đối chiếu yêu cầu và chọn thứ tự đọc: ... phút] ← BƯỚC NGHẼN GIẢ THUYẾT
-→ [4 Đọc sâu phần đã chọn: ... phút]
-→ [5 Ghi chú và kiểm tra yêu cầu: ... phút]
-
-Tổng: ... phút/phiên. B1 đo riêng bước 3.
-```
+![Workflow Card #1 — Ưu tiên phần kiến thức cần đọc; bước 3 là bước nghẽn giả thuyết, thời gian chưa đo](../assets/cp2-workflow-card-1.png)
 
 ### Problem Card #2 — Tốn thời gian đọc lại nội dung chưa hiểu hoặc đã quên
 

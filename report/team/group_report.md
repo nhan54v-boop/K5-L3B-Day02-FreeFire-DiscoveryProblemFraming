@@ -46,13 +46,7 @@
 
 Gốc là **1 outcome**. Nhánh là **opportunity** (nhu cầu, pain), không phải tính năng hay công cụ.
 
-```text
-OUTCOME: Giảm thời gian sinh viên CNTT dành cho việc ứng tuyển mà hồ sơ vẫn đúng sự thật
-├── Opportunity A: Mỗi JD đòi từ khóa khác nhau, phải viết lại mô tả đồ án cho từng CV (bước tốn nhất, ~20 phút/CV)
-├── Opportunity B: Mỗi tối phải đọc 25–30 JD không cùng cấu trúc để tìm 2–3 JD nộp được
-├── Opportunity C: Chuẩn bị phỏng vấn phải gom thông tin rời rạc (JD, website công ty, review)
-└── Opportunity D: Chưa biết CV sau khi chỉnh có thật sự qua vòng lọc tốt hơn không
-```
+![Cây OST CP3: giảm thời gian ứng tuyển mà hồ sơ vẫn đúng sự thật, với bốn nhánh opportunity; nhánh A chỉnh CV theo JD được chọn](../assets/cp3-ost.png)
 
 Những ý đã gạch bỏ vì là solution đội lốt opportunity:
 
