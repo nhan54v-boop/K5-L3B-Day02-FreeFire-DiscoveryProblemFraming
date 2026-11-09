@@ -90,47 +90,83 @@ Shortlist gồm 4 card mà mỗi thành viên chọn pitch (#7, #10, #4, #1). T�
 
 | # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
+| 1 | Sinh viên CNTT khác cũng mất trên 30 phút/CV khi chỉnh CV theo từng JD | Value | 5 | 2 | ✅ |
+| 2 | Bước tốn nhất là viết lại bullet mô tả đồ án, không phải đọc JD hay căn chỉnh layout | Value | 5 | 2 | ✅ |
+| 3 | Chỉnh CV riêng cho từng JD thật sự cần thiết; 3 bản CV cố định + ngân hàng câu mô tả chưa đủ | Value | 5 | 1 | ✅ |
+| 4 | Sinh viên sẵn sàng dùng bản nháp AI và tự kiểm từng dòng trước khi nộp | Usability | 4 | 1 | ✅ |
+| 5 | Có thể giữ bản nháp chỉ dựa trên đồ án có thật, không bịa kỹ năng hay số liệu | Feasibility | 4 | 3 | Kiểm trong pilot |
+| 6 | Đưa dữ liệu đồ án và CV vào công cụ AI chấp nhận được về riêng tư và chi phí (gói free có giới hạn) | Viability | 3 | 3 | Kiểm sau |
 
-*Điền 4–6 giả định; xóa dòng thừa.*
+Giả định nhóm kiểm chứng trong buổi này: #1, #2, #3 (và #4 nếu còn thời gian).
 
-Giả định nhóm kiểm chứng trong buổi này:
+*Cơ sở điểm "bằng chứng": #1, #2 chỉ có số bấm giờ của Hiệu (5 lần). #3 mới là câu hỏi Hiệu nêu ở CP2, chưa có dữ liệu. #5 và #6 có thêm thông tin từ research ở 3.3 (công cụ đã có, có gói free giới hạn, nguồn hướng dẫn nhắc rủi ro AI tự bịa). Điểm "Quan trọng" là đánh giá của nhóm, cần thống nhất lại.*
 
 ### 3.2. Kiểm chứng
 
-Cách đã dùng: Phỏng vấn / Survey / Log, ticket, review
+Cách đã dùng: **Log (tự bấm giờ, dữ liệu thật)** và **Phỏng vấn nội bộ nhóm** theo The Mom Test.
 
-Interview snapshot (mỗi buổi phỏng vấn một bảng, hoặc đặt file trong `report/assets/cp4-interview-snapshot-N.md`):
+**Bằng chứng thật (từ bài cá nhân của Hiệu, CP1–CP2):** tự bấm giờ 5 lần sửa CV gần nhất, trung bình 45 phút/CV; tuần trước nộp 6 công ty, tổng 270 phút. Quy trình 6 bước: đọc JD 5' → mở CV gốc và GitHub 3' → chọn đồ án 5' → viết lại bullet 20' → căn layout và xuất PDF 7' → nộp và ghi Sheets 5'.
+
+**Interview snapshot — buổi 1 : Hải Anh**
 
 | Trường | Nội dung |
 |---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | |
-| Câu nói đáng nhớ nhất (nguyên văn) | |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | |
-| Hiện đang xử lý bằng cách nào (workaround)? | |
-| Mất bao lâu, bao lần? | |
-| Insight / opportunity rút ra | |
+| Người được hỏi (vai trò, không ghi tên thật) | Sinh viên làm đồ án nhóm, đang xin thực tập |
+| Câu nói đáng nhớ nhất (nguyên văn) | "Phần lâu nhất là viết lại câu chữ, vì mình sợ viết quá lên so với những gì mình làm thật." |
+| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Tuần trước nộp CV cho một công ty sản phẩm; đọc JD rồi viết lại phần mô tả đồ án cho khớp từ khóa |
+| Hiện đang xử lý bằng cách nào (workaround)? | Sửa tay; thỉnh thoảng nhờ ChatGPT rồi đọc lại từng dòng (một lần AI tự thêm công nghệ chưa từng dùng) |
+| Mất bao lâu, bao lần? | ~35–40 phút/CV (ước lượng theo trí nhớ); không nhớ rõ tần suất |
+| Insight / opportunity rút ra | Pain nằm ở bước viết lại bullet và nỗi lo viết sai sự thật; cần bước duyệt từng dòng |
+
+**Interview snapshot — buổi 2 : Nhân**
+
+| Trường | Nội dung |
+|---|---|
+| Người được hỏi (vai trò, không ghi tên thật) | Sinh viên, mới bắt đầu nộp CV, ít đơn |
+| Câu nói đáng nhớ nhất (nguyên văn) | "Cái mình mất thời gian hơn là đọc JD để quyết định có nộp không." |
+| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Đầu học kỳ nộp thử 2 công ty, dùng một CV chung, chỉ sửa phần giới thiệu |
+| Hiện đang xử lý bằng cách nào (workaround)? | Một CV chung; từng nhờ AI nhận xét CV chung, không dùng để viết lại theo JD |
+| Mất bao lâu, bao lần? | ~10–15 phút/lần sửa phần giới thiệu (ước lượng); 2 đơn |
+| Insight / opportunity rút ra | Người nộp ít đơn không coi viết lại bullet là bottleneck; pain nghiêng về đọc và lọc JD (Opportunity B) |
+
+**Interview snapshot — buổi 3 : Dũng**
+
+| Trường | Nội dung |
+|---|---|
+| Người được hỏi (vai trò, không ghi tên thật) | Kỹ sư AI đã đi làm, từng đổi việc |
+| Câu nói đáng nhớ nhất (nguyên văn) | "Mình xóa các số liệu mà mình không nhớ đã làm. Mình không muốn bị hỏi ngược lại trong phỏng vấn." |
+| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Một lần JD yêu cầu sâu về RAG, bản CV cố định chưa nhấn phần đó, phải viết lại |
+| Hiện đang xử lý bằng cách nào (workaround)? | 2 bản CV cố định + file câu mô tả dự án (tương đương "bullet bank") |
+| Mất bao lâu, bao lần? | ~10–15 phút với bản cố định; ~30 phút khi JD lệch bản cố định (ước lượng) |
+| Insight / opportunity rút ra | No AI (bản cố định + bullet bank) đủ cho phần lớn trường hợp; chỉ JD lệch mới tốn thời gian. Người dùng tự nhận ra rủi ro AI bịa số liệu |
 
 Tổng hợp:
 
 | Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác |
 |---|---:|---|---|
-| | | | |
+| Tự bấm giờ (Hiệu) | 5 lần, 1 người | Trung bình 45 phút/CV; bước viết lại bullet ~20 phút | Chưa có; dữ liệu của một người |
+| Phỏng vấn nội bộ | 3 | 1/3 (Hải Anh) sửa từng JD, ~35–40 phút, nghẽn ở viết lại bullet; 2/3 nêu nỗi lo AI thêm nội dung không đúng sự thật | 2/3 không sửa bullet theo từng JD: Nhân dùng CV chung (pain ở đọc JD); Dũng dùng bản cố định + bullet bank, chỉ 10–15 phút |
 
-**Nhóm đã sửa problem thế nào sau kiểm chứng:**
+**Nhóm đã sửa problem thế nào sau kiểm chứng:** thu hẹp actor thành "sinh viên nộp nhiều đơn và sửa CV riêng cho từng JD"; giữ phương án No AI (bản cố định + bullet bank) cho người nộp ít đơn; đặt "AI không tự thêm công nghệ hay số liệu không có trong dữ liệu đồ án" làm boundary bắt buộc; thu hẹp hướng giải từ "xây công cụ AI viết CV" thành "soạn nháp bullet từ dữ liệu đồ án thật, sinh viên duyệt từng dòng". Giả định #3 (bản cố định chưa đủ) vẫn chưa đủ bằng chứng.
 
 ### 3.3. Research giải pháp đã có
 
 | Công cụ / case / pattern | Link | Giải bước nào trong quy trình? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
 |---|---|---|---|---|---|
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| Teal (AI Resume Builder + Job Matcher) | https://www.tealhq.com/free | Bước 1, 3, 4: dán JD, tìm kỹ năng/từ khóa nhà tuyển dụng cần, gợi ý chỉnh nội dung CV; có job tracker (liên quan bước 6) | Trang chính thức nêu: phân tích CV theo JD, chấm điểm match, gợi ý từ khóa; có gói miễn phí | Trang giá (https://tealhq.com/resume-builder) ghi gói free chỉ có AI credits giới hạn, phân tích và so khớp từ khóa nâng cao ở gói trả phí. Match Score dựa trên từ khóa, không kiểm tra nội dung có đúng sự thật không | Thị trường đã có sản phẩm làm đúng bước 4, không nên tự xây từ đầu. Có thể thử gói free để đo thời gian thật cho phương án Workflow |
+| Jobscan (Match Report) | https://jobscan.co/resume-matcher | Bước 1, 3: so CV với JD, liệt kê kỹ năng cứng/mềm còn thiếu | Trang chính thức: Match Report miễn phí 5 lần quét, chỉ ra kỹ năng thiếu và số lần xuất hiện | Chính trang https://www.jobscan.co/resume-checker nói ATS thật không chấm điểm CV, Match Rate chỉ để hình dung. Chấm theo từ khóa nên dễ dẫn đến nhồi từ khóa | Dùng như bước **Rule** (kiểm từ khóa thiếu), không dùng điểm này làm metric chất lượng. Metric chất lượng của nhóm cần cách đo khác (đúng sự thật, mentor/bạn đọc) |
+| Kickresume (AI Writer) | https://www.kickresume.com/pricing | Bước 4: tạo hoặc viết lại nội dung CV từ job title và tin tuyển dụng | Trang giá mô tả: nhập job title và job ad, AI tạo CV; có ATS Resume Checker trong gói trả phí | AI Writer thuộc gói trả phí. Rủi ro (suy ra từ cách hoạt động, chưa thử): khi AI tạo nội dung từ job title có thể sinh nội dung không đến từ đồ án thật | Nếu dùng công cụ kiểu "AI tạo CV", phải ép đầu vào là dữ liệu đồ án thật của sinh viên và duyệt từng dòng (boundary) |
+| TopCV — tạo CV online theo mẫu | https://www.topcv.vn/cach-tao-cv-online-tren-topcv | Bước 5: căn layout, xuất PDF | Trang hướng dẫn nêu có gần 70 mẫu theo style và mẫu theo vị trí ứng tuyển; đây là phương án No AI cho phần trình bày | Mẫu giải quyết layout, không viết lại mô tả đồ án theo JD. Nhóm chưa tìm thấy trang chính thức xác nhận TopCV có tính năng AI chỉnh CV theo JD | Bước 5 (7 phút) giải bằng mẫu cố định; AI nên nhắm vào bước 4 |
+| Cách dùng ChatGPT viết CV theo JD (pattern thủ công, bài hướng dẫn tiếng Việt) | https://findskill.ai/vi/blog/ai-viet-cv-xin-viec-2026-huong-dan-tieng-viet/ ; thêm: https://www.rezi.ai/posts/rezi-alternatives | Bước 4: dán JD và dữ liệu thật, nhờ AI viết lại bullet | Không cần công cụ mới; bài hướng dẫn nêu cách làm: dán nguyên JD, cung cấp dữ liệu thật, đọc lại từng dòng và xóa số liệu không nhớ. Blog của Rezi cũng nhắc nội dung chỉnh phải đúng kinh nghiệm thật | Cả hai là blog, không phải nghiên cứu; chưa có số liệu hiệu quả. Rezi là bên bán công cụ nên có thể thiên lệch | Mức **Workflow** có thể bắt đầu bằng prompt chuẩn, chưa cần xây gì. Cách làm này trùng với boundary mà nhóm đã đề xuất (AI không bịa, sinh viên duyệt trước khi nộp) |
+
+**Kết luận research:**
+
+```text
+Bước viết lại bullet theo JD (bottleneck) đã có công cụ hỗ trợ (Teal, Kickresume) hoặc làm được bằng prompt chuẩn.
+Không có lý do tự xây một công cụ mới.
+Hướng hợp lý: Rule kiểm từ khóa thiếu (Jobscan/Teal free) -> AI nháp bullet từ dữ liệu đồ án thật -> sinh viên duyệt từng dòng -> sinh viên nộp.
+Chưa kiểm chứng: nháp AI có thật sự giảm từ 45 xuống dưới 15 phút/CV hay không (cần pilot, CP6).
+```
 
 ---
 
